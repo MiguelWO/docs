@@ -1,29 +1,29 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "CEROUNO API Documentation",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/logo_v1.jpg",
+    "light": "/logo/logo_v1.jpg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "logo\favicon.jpg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#FFC4E5",
+    "light": "#FF99CE",
+    "dark": "#021F32",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#E75C4A",
+      "to": "#E75C4A"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:miguel@cerouno.ai"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "API",
+    "url": "https://simi-api-project-dev-749074430490.us-central1.run.app"
   },
   "tabs": [
     {
@@ -84,8 +84,8 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "instagram": "https://www.instagram.com/cerounoai/",
+    "linkedin": "https://www.linkedin.com/company/cerouno-ai/",
+    "website": "https://www.tiktok.com/@cerounoai?_t=8s02069G5Ar&_r=1"
   }
 }

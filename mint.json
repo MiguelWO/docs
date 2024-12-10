@@ -5,7 +5,7 @@
     "dark": "/logo/logo_v1.jpg",
     "light": "/logo/logo_v1.jpg"
   },
-  "favicon": "logo\favicon.jpg",
+  "favicon": "logo/favicon.jpg",
   "colors": {
     "primary": "#FFC4E5",
     "light": "#FF99CE",
@@ -75,11 +75,28 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Listing Endpoints",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/listings/get-apilisting-1",
+        "api-reference/listings/get-apilisting",
+        "api-reference/listings/post-apilisting",
+        "api-reference/listings/put-apilisting"
+      ]
+    },
+    {
+      "group" : "Agent Endpoints",
+      "pages": [
+        "api-reference/agents/actualizar-agente",
+        "api-reference/agents/crear-agente",
+        "api-reference/agents/eliminar-agente",
+        "api-reference/agents/obtener-agentes"
+      ]
+    },
+    {
+      "group" : "Client Endpoints",
+      "pages": [
+        "api-reference/clients/obtener-clientes",
+        "api-reference/clients/obtener-cliente"
       ]
     }
   ],

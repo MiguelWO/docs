@@ -1,33 +1,33 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Introducción'
+description: 'Documentación de la API para la gestión de agentes, inmuebles y clientes en la inmobiliaria.'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  Esta sección proporciona una introducción a la API y su funcionalidad principal. Para detalles más específicos, consulta cada una de las rutas categorizadas.
 </Note>
 
-## Welcome
+## Bienvenido
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Esta API está diseñada para facilitar la gestión de agentes, inmuebles y clientes en una inmobiliaria. Se pueden realizar operaciones como crear, actualizar, eliminar y consultar datos relacionados con estos recursos.
+
+Utilizamos el estándar [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) para garantizar una documentación clara y funcional.
 
 <Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
+  title="Especificación OpenAPI"
+  icon="file-alt"
+  href="https://github.com/tu-repo/api-reference/openapi.json"
 >
-  View the OpenAPI specification file
+  Ver archivo de especificación OpenAPI
 </Card>
 
-## Authentication
+## Autenticación
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Todas las rutas de la API requieren autenticación mediante un encabezado con una API Key. Incluye el encabezado `x-api-key` en cada solicitud para acceder a los recursos.
 
 ```json
 "security": [
   {
-    "bearerAuth": []
+    "x-api-key": []
   }
 ]
-```

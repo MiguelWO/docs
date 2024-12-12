@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/api/listing/{listing_id}": {
+    "/api/listings/{listing_id}": {
       "get": {
         "description": "Devolver la información de una propiedad",
         "parameters": [
@@ -204,18 +204,48 @@
         }
       }
     },
-    "/api/listing": {
+    "/api/listings": {
       "get": {
         "description": "Devolver todas las propiedades",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SearchListing"
-              }
+        "parameters" : [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número de página",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "description": "Número de propiedades por página",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name" : "ordering",
+            "in" : "query",
+            "description" : "Ordenar por precio",
+            "required" : false,
+            "schema" : {
+              "type" : "string",
+              "enum" : ["asc", "desc"]
+            }
+          },
+          {
+            "name": "broker_id",
+            "in": "header",
+            "description": "ID del broker",
+            "required": true,
+            "schema": {
+              "type": "integer"
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "Propiedades devueltas",
@@ -498,6 +528,10 @@
       "UpdateListing": {
         "type": "object",
         "properties": {
+            "broker_id": {
+              "type": "integer",
+              "example": 1
+            },
             "for_rent": {
               "type": "boolean",
               "example": true

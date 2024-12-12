@@ -2,17 +2,18 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "CEROUNO API Documentation",
   "logo": {
-    "dark": "/logo/logo_v1.jpg",
-    "light": "/logo/logo_v1.jpg"
+    "dark": "/logo/2.svg",
+    "light": "/logo/2.svg"
   },
   "favicon": "logo/favicon.jpg",
+  "theme": "prism",
   "colors": {
-    "primary": "#FFC4E5",
-    "light": "#FF99CE",
-    "dark": "#021F32",
+    "primary": "#021F32",
+    "light": "#FFC4E5",
+    "dark": "#E75C4A",
     "anchors": {
       "from": "#E75C4A",
-      "to": "#E75C4A"
+      "to": "#FF99CE"
     }
   },
   "topbarLinks": [
@@ -77,10 +78,10 @@
     {
       "group": "Listing Endpoints",
       "pages": [
-        "api-reference/listings/get-apilisting-1",
-        "api-reference/listings/get-apilisting",
-        "api-reference/listings/post-apilisting",
-        "api-reference/listings/put-apilisting"
+        "api-reference/listings/get-apilistings-1",
+        "api-reference/listings/get-apilistings",
+        "api-reference/listings/post-apilistings",
+        "api-reference/listings/put-apilistings"
       ]
     },
     {
@@ -89,14 +90,17 @@
         "api-reference/agents/actualizar-agente",
         "api-reference/agents/crear-agente",
         "api-reference/agents/eliminar-agente",
+        "api-reference/agents/obtener-agente",
         "api-reference/agents/obtener-agentes"
       ]
     },
     {
       "group" : "Client Endpoints",
       "pages": [
-        "api-reference/clients/obtener-clientes",
-        "api-reference/clients/obtener-cliente"
+        "api-reference/clients/actualizar-un-cliente",
+        "api-reference/clients/crear-un-cliente",
+        "api-reference/clients/información-de-un-cliente",
+        "api-reference/clients/lista-de-clientes"
       ]
     }
   ],

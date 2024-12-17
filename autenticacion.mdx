@@ -1,0 +1,70 @@
+---
+title: Autenticación
+description: 'Guía para autenticar tus solicitudes en nuestra API'
+---
+
+<img
+  className="block dark:hidden"
+  src="/images/authentication-light.svg"
+  alt="Authentication Light"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/authentication-dark.svg"
+  alt="Authentication Dark"
+/>
+
+## Autenticación
+
+La autenticación es un paso esencial para garantizar la seguridad de nuestras interacciones con la API. Todas las solicitudes deben incluir un token de acceso válido en el encabezado.
+
+### ¿Cómo funciona?
+
+Nuestra API utiliza el estándar **Bearer Token** para autenticar las solicitudes. Esto significa que debes incluir un token en el encabezado `Authorization` de cada petición.
+
+### Ejemplo de solicitud autenticada
+
+```bash
+curl -X GET "https://api.cerouno.ai/v1/inmuebles" \
+-H "Authorization: Bearer TU_TOKEN_DE_ACCESO"
+```
+
+### Pasos para autenticarte
+
+1. **Obtén tus credenciales**  
+   Escríbenos a [miguel@cerouno.ai](mailto:miguel@cerouno.ai) o al celular [+57 311 3627525](tel:+573113627525) para recibir tus credenciales de acceso.
+
+2. **Solicita tu token**  
+   Envía una solicitud al endpoint de autenticación con tus credenciales para obtener un token. Este token deberá ser incluido en todas las solicitudes a la API.  
+
+   **Ejemplo de solicitud para obtener un token**:
+   ```bash
+   curl -X POST "https://api.cerouno.ai/v1/auth/login" \
+   -H "Content-Type: application/json" \
+   -d '{
+     "usuario": "tu_usuario",
+     "contrasena": "tu_contraseña"
+   }'
+   ```
+
+   **Respuesta esperada**:
+   ```json
+   {
+     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+   }
+   ```
+
+3. **Incluye el token en tus solicitudes**  
+   Usa el token recibido en el encabezado `Authorization` como se muestra en el ejemplo anterior.
+
+### Notas importantes
+
+- Los tokens tienen una duración limitada. Si tu token expira, solicita uno nuevo utilizando tus credenciales.  
+- Mantén tus credenciales y token en un lugar seguro para evitar accesos no autorizados.  
+
+### Recursos relacionados
+
+- [Documentación Técnica](/docs/referencia-api)  
+- [Primeros Pasos](/docs/primeros-pasos)
+
+Si tienes alguna pregunta o necesitas ayuda con la autenticación, contáctanos y estaremos encantados de asistirte.

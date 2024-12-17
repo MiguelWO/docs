@@ -34,73 +34,58 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "Link a CEROUNO",
+      "icon": "link",
+      "url": "https://www.cerouno.ai/"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
+      "name": "Link a nuestro Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://www.cerouno.ai/blog"
+    },
+    {
+      "name": "Correo Soporte",
+      "icon": "mailchimp",
+      "url": "mailto:miguel@cerouno.ai"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
+        "introduccion",
+        "integracion",
+        "primeros-pasos",
+        "referencias-api",
+        "autenticacion"	
       ]
     },
     {
       "group": "Listing Endpoints",
       "pages": [
-        "api-reference/listings/get-apilistings-1",
-        "api-reference/listings/get-apilistings",
-        "api-reference/listings/post-apilistings",
-        "api-reference/listings/put-apilistings"
+        "listings/get-apilistings-1",
+        "listings/get-apilistings",
+        "listings/post-apilistings",
+        "listings/put-apilistings"
       ]
     },
     {
       "group" : "Agent Endpoints",
       "pages": [
-        "api-reference/agents/actualizar-agente",
-        "api-reference/agents/crear-agente",
-        "api-reference/agents/eliminar-agente",
-        "api-reference/agents/obtener-agente",
-        "api-reference/agents/obtener-agentes"
+        "agents/actualizar-agente",
+        "agents/crear-agente",
+        "agents/eliminar-agente",
+        "agents/obtener-agente",
+        "agents/obtener-agentes"
       ]
     },
     {
       "group" : "Client Endpoints",
       "pages": [
-        "api-reference/clients/actualizar-un-cliente",
-        "api-reference/clients/crear-un-cliente",
-        "api-reference/clients/información-de-un-cliente",
-        "api-reference/clients/lista-de-clientes"
+        "clients/actualizar-un-cliente",
+        "clients/crear-un-cliente",
+        "clients/información-de-un-cliente",
+        "clients/lista-de-clientes"
       ]
     }
   ],

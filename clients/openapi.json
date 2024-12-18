@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://simi-api-project-dev-749074430490.us-central1.run.app"
+      "url": "https://cerouno-api-project-749074430490.us-central1.run.app"
     }
   ],
   "security": [

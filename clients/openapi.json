@@ -21,7 +21,7 @@
   "paths": {
     "/api/clients": {
       "get": {
-        "summary": "Lista de clientes",
+        "summary": "Obtener Inmobiliarias",
         "description": "Devuelve una lista de clientes registrados en el sistema.",
         "responses": {
           "200": {
@@ -87,8 +87,8 @@
         }
       },
       "post" : {
-        "summary": "Crear un cliente",
-        "description": "Crea un nuevo cliente en el sistema.",
+        "summary": "Crear Inmobiliaria",
+        "description": "Crea una nueva inmobiliaria en el sistema.",
         "requestBody": {
           "required": true,
           "content": {
@@ -165,11 +165,11 @@
     },
     "/client/{client_id}": {
       "get": {
-        "summary": "Información de un cliente",
-        "description": "Obtiene información detallada de un cliente específico.",
+        "summary": "Obtener una Inmobiliaria",
+        "description": "Devuelve la información de una inmobiliaria específica.",
         "parameters": [
           {
-            "name": "client_id",
+            "name": "broker_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -241,11 +241,11 @@
         }
       },
       "put" : {
-        "summary": "Actualizar un cliente",
-        "description": "Actualiza la información de un cliente específico.",
+        "summary": "Actualizar Inmobiliaria",
+        "description": "Actualiza la información de una inmobiliaria específica.",
         "parameters": [
           {
-            "name": "client_id",
+            "name": "broker_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -325,6 +325,84 @@
               }
             }
           }
+        },
+        "delete" : {
+          "summary": "Eliminar Inmobiliaria",
+          "description": "Elimina una inmobiliaria específica del sistema.",
+          "parameters": [
+            {
+              "name": "broker_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200" : {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccesfulDelete"
+                  }
+                }
+              }
+            },
+            "204": {
+              "description": "No Content"
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Unauthorized"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFound"
+                  }
+                }
+              }
+            },
+            "429": {
+              "description": "Too Many Requests",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TooManyRequests"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InternalServerError"
+                  }
+                }
+              }
+            },
+            "502": {
+              "description": "Bad Gateway",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadGateway"
+                  }
+                }
+              }
+            }
+          }
         }
       }
   },
@@ -340,16 +418,23 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int64",
+            "example": 1
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "example": "Inmobiliaria Los Pinos",
+            "description": "Nombre de la inmobiliaria"
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "example": "inmobiliaria@gmail.com",
+            "description": "Correo electrónico de la inmobiliaria"
           },
           "phone": {
-            "type": "string"
+            "type": "string",
+            "example": "1234567890"
           }
         }
       },
@@ -357,7 +442,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Credenciales de Autenticación inválidas."
           }
         }
       },
@@ -365,7 +451,26 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Inmobiliaria no encontrada."
+          }
+        }
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Petición inválida."
+          }
+        }
+      },
+      "SuccesfulDelete": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Inmobiliaria eliminada exitosamente."
           }
         }
       },
@@ -373,7 +478,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Demasiadas solicitudes. Intente nuevamente en unos minutos."
           }
         }
       },
@@ -381,7 +487,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Error interno del servidor. Intente nuevamente más tarde."
           }
         }
       },
@@ -389,7 +496,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Error al conectar con el servidor. Intente nuevamente más tarde."
           }
         }
       }

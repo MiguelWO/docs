@@ -63,10 +63,11 @@
     {
       "group": "Listing Endpoints",
       "pages": [
-        "listings/get-apilistings-1",
-        "listings/get-apilistings",
-        "listings/post-apilistings",
-        "listings/put-apilistings"
+        "listings/actualizar-propiedad",
+        "listings/crear-propiedad",
+        "listings/eliminar-propiedad",
+        "listings/obtener-propiedad",
+        "listings/obtener-propiedades"
       ]
     },
     {
@@ -76,16 +77,18 @@
         "agents/crear-agente",
         "agents/eliminar-agente",
         "agents/obtener-agente",
-        "agents/obtener-agentes"
+        "agents/obtener-agentes",
+        "agents/obtener-agentes-por-broker"	
       ]
     },
     {
-      "group" : "Client Endpoints",
+      "group" : "Broker Endpoints",
       "pages": [
-        "clients/actualizar-un-cliente",
-        "clients/crear-un-cliente",
-        "clients/información-de-un-cliente",
-        "clients/lista-de-clientes"
+        "clients/actualizar-inmobiliaria",
+        "clients/crear-inmobiliaria",
+        "clients/eliminar-inmobiliaria",
+        "clients/obtener-inmobiliarias",
+        "clients/obtener-una-inmobiliaria"
       ]
     }
   ],

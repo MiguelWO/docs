@@ -1,6 +1,7 @@
 ---
 title: Autenticación
-description: 'Guía para autenticar tus solicitudes en nuestra API'
+description: 'Guía completa para autenticar solicitudes en nuestra API de manera segura'
+icon: 'lock'
 ---
 
 <img
@@ -14,57 +15,98 @@ description: 'Guía para autenticar tus solicitudes en nuestra API'
   alt="Authentication Dark"
 />
 
-## Autenticación
+## Introducción a la Autenticación
 
-La autenticación es un paso esencial para garantizar la seguridad de nuestras interacciones con la API. Todas las solicitudes deben incluir un token de acceso válido en el encabezado.
+La autenticación es fundamental para proteger el acceso a nuestra API. Garantizamos la seguridad de tus datos mediante un robusto sistema de autenticación basado en tokens Bearer.
 
-### ¿Cómo funciona?
+### Características Clave
 
-Nuestra API utiliza el estándar **Bearer Token** para autenticar las solicitudes. Esto significa que debes incluir un token en el encabezado `Authorization` de cada petición.
+- **Seguridad Robusta**: Implementamos el estándar Bearer Token
+- **Gestión Simple**: Proceso de obtención de token claro y directo
+- **Tokens Temporales**: Seguridad adicional mediante tokens con tiempo de vida limitado
 
-### Ejemplo de solicitud autenticada
+## Flujo de Autenticación
+
+### 1. Obtención de Credenciales
+
+Para comenzar, necesitas obtener tus credenciales de acceso:
+
+<Note>
+  📧 Contacta a nuestro equipo para recibir tus credenciales:
+  - Correo: [miguel@cerouno.ai](mailto:miguel@cerouno.ai)
+  - Whatsapp: [+57 311 3627525](tel:+573113627525)
+</Note>
+
+### 2. Solicitud de Token de Acceso
+
+Utiliza tus credenciales para obtener un token de autenticación:
+
+```bash
+curl -X POST "https://api.cerouno.ai/v1/auth/login" \
+-H "Content-Type: application/json" \
+-d '{
+  "usuario": "tu_usuario",
+  "contrasena": "tu_contraseña"
+}'
+```
+
+#### Respuesta de Ejemplo
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expiracion": "2024-12-31T23:59:59Z"
+}
+```
+
+### 3. Uso del Token en Solicitudes
+
+Incluye el token en el encabezado `x-api-key` de cada petición:
 
 ```bash
 curl -X GET "https://api.cerouno.ai/v1/inmuebles" \
--H "Authorization: Bearer TU_TOKEN_DE_ACCESO"
+-H "x-api-key : Bearer TU_TOKEN_DE_ACCESO"
 ```
 
-### Pasos para autenticarte
+## Mejores Prácticas
 
-1. **Obtén tus credenciales**  
-   Escríbenos a [miguel@cerouno.ai](mailto:miguel@cerouno.ai) o al celular [+57 311 3627525](tel:+573113627525) para recibir tus credenciales de acceso.
+<CardGroup cols={2}>
+  <Card
+    title="Protege tus Credenciales"
+    icon="shield"
+    color="#4CAF50"
+  >
+    Almacena tokens y credenciales de manera segura. Nunca los compartas públicamente.
+  </Card>
+  
+  <Card
+    title="Renovación de Token"
+    icon="arrows-rotate"
+    color="#2196F3"
+  >
+    Renueva tu token antes de que expire para mantener el acceso continuo.
+  </Card>
+</CardGroup>
 
-2. **Solicita tu token**  
-   Envía una solicitud al endpoint de autenticación con tus credenciales para obtener un token. Este token deberá ser incluido en todas las solicitudes a la API.  
+## Solución de Problemas
 
-   **Ejemplo de solicitud para obtener un token**:
-   ```bash
-   curl -X POST "https://api.cerouno.ai/v1/auth/login" \
-   -H "Content-Type: application/json" \
-   -d '{
-     "usuario": "tu_usuario",
-     "contrasena": "tu_contraseña"
-   }'
-   ```
+<Accordion title="Errores Comunes de Autenticación">
+  - **401 Unauthorized**: Token inválido o expirado
+  - **403 Forbidden**: Permisos insuficientes
+  - **400 Bad Request**: Formato de solicitud incorrecto
+</Accordion>
 
-   **Respuesta esperada**:
-   ```json
-   {
-     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-   }
-   ```
+## Recursos Adicionales
 
-3. **Incluye el token en tus solicitudes**  
-   Usa el token recibido en el encabezado `Authorization` como se muestra en el ejemplo anterior.
-
-### Notas importantes
-
-- Los tokens tienen una duración limitada. Si tu token expira, solicita uno nuevo utilizando tus credenciales.  
-- Mantén tus credenciales y token en un lugar seguro para evitar accesos no autorizados.  
-
-### Recursos relacionados
-
-- [Documentación Técnica](/docs/referencia-api)  
+- [Documentación Técnica](/listings/obtener-propiedad)
 - [Primeros Pasos](/docs/primeros-pasos)
 
-Si tienes alguna pregunta o necesitas ayuda con la autenticación, contáctanos y estaremos encantados de asistirte.
+### Contacto de Soporte
+
+Si necesitas ayuda con la autenticación, no dudes en contactarnos:
+- Correo: soporte@cerouno.ai
+- Teléfono: +57 311 3627525
+
+<Tip>
+  🔐 Recuerda: La seguridad de tu token es responsabilidad tuya. Trátalo como tratarías una contraseña.
+</Tip>

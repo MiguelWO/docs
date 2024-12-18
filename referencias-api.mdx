@@ -1,6 +1,7 @@
 ---
 title: Documentación Técnica
-description: 'Detalles técnicos y referencias para integrar nuestra API'
+description: 'Referencia completa para desarrolladores: Endpoints, esquemas y detalles de integración de Cerouno API'
+icon: 'code'
 ---
 
 <img
@@ -14,22 +15,164 @@ description: 'Detalles técnicos y referencias para integrar nuestra API'
   alt="API Reference Dark"
 />
 
-## Documentación Técnica
+## Introducción a la Referencia Técnica
 
-En esta sección encontrarás todos los detalles técnicos para integrar nuestra API de manera eficiente. Desde especificaciones de endpoints hasta parámetros y ejemplos de solicitudes.
+Bienvenido a la guía definitiva para integradores y desarrolladores. Aquí encontrarás toda la información técnica necesaria para aprovechar al máximo la API de Cerouno.
 
-<Card
-  title="Documentación Técnica"
-  icon="code"
-  href="/docs/referencia-api"
->
-  Consulta los detalles de nuestra API
-</Card>
+### Contenido de la Documentación
 
-### ¿Qué encontrarás aquí?
+<CardGroup cols={3}>
+  <Card
+    title="Endpoints"
+    icon="network-wired"
+    color="#4CAF50"
+  >
+    Catálogo completo de endpoints disponibles con detalles de uso
+  </Card>
 
-1. **Referencias de Endpoints**: Una lista completa de los endpoints disponibles y su funcionalidad.
-2. **Esquemas de datos**: Detalle de las estructuras de datos utilizadas en las solicitudes y respuestas.
-3. **Autenticación**: Cómo configurar y utilizar los tokens para acceso seguro.
+  <Card
+    title="Esquemas de Datos"
+    icon="database"
+    color="#2196F3"
+  >
+    Estructuras de datos detalladas para solicitudes y respuestas
+  </Card>
 
-Si necesitas ayuda adicional, puedes contactarnos por [correo](mailto:miguel@cerouno.ai) o al celular [+57 311 3627525](tel:+573113627525). ¡Estamos siempre disponibles para apoyarte!
+  <Card
+    title="Autenticación"
+    icon="lock"
+    color="#FF9800"
+  >
+    Guía completa de seguridad y acceso
+  </Card>
+</CardGroup>
+
+## Endpoints Principales
+
+<Accordion title="Lista de Endpoints Disponibles">
+  ### Propiedades
+  - `GET /v1/propiedades`: Listar propiedades
+  - `POST /v1/propiedades`: Crear nueva propiedad
+  - `PUT /v1/propiedades/{id}`: Actualizar propiedad
+  - `DELETE /v1/propiedades/{id}`: Eliminar propiedad
+
+  ### Agentes
+  - `GET /v1/agentes`: Listar agentes
+  - `POST /v1/agentes`: Crear nuevo agente
+  - `PUT /v1/agentes/{id}`: Actualizar agente
+  - `DELETE /v1/agentes/{id}`: Eliminar agente
+
+  ### Inventario
+  - `GET /v1/inventario`: Consultar inventario
+  - `POST /v1/inventario`: Actualizar inventario
+</Accordion>
+
+## Esquemas de Datos
+
+### Esquema de Propiedad
+
+```json
+{
+  "id": "string",
+  "titulo": "string",
+  "descripcion": "string",
+  "tipo": "string",
+  "precio": "number",
+  "ubicacion": {
+    "ciudad": "string",
+    "departamento": "string",
+    "direccion": "string"
+  },
+  "caracteristicas": {
+    "habitaciones": "number",
+    "banos": "number",
+    "area": "number"
+  },
+  "estado": "string",
+  "agente_id": "string"
+}
+```
+
+### Esquema de Agente
+
+```json
+{
+  "id": "string", 
+  "nombre": "string",
+  "email": "string",
+  "telefono": "string",
+  "empresa": "string",
+  "propiedades": "array"
+}
+```
+
+## Autenticación y Seguridad
+
+<Steps>
+  <Step title="Obtener Credenciales">
+    Contacta con nuestro equipo para recibir tus credenciales de acceso
+  </Step>
+
+  <Step title="Solicitar Token">
+    Realiza una solicitud POST al endpoint de autenticación
+  </Step>
+
+  <Step title="Incluir Token">
+    Añade el token recibido en el encabezado `Authorization`
+  </Step>
+</Steps>
+
+### Ejemplo de Solicitud Autenticada
+
+```bash
+curl -X GET "https://api.cerouno.ai/v1/propiedades" \
+-H "Authorization: Bearer TU_TOKEN_DE_ACCESO"
+```
+
+## Códigos de Respuesta
+
+<CardGroup cols={2}>
+  <Card
+    title="Códigos Exitosos"
+    icon="check-circle"
+    color="#4CAF50"
+  >
+    - 200 OK
+    - 201 Created
+    - 204 No Content
+  </Card>
+
+  <Card
+    title="Códigos de Error"
+    icon="triangle-exclamation"
+    color="#F44336"
+  >
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 403 Forbidden
+    - 404 Not Found
+    - 500 Internal Server Error
+  </Card>
+</CardGroup>
+
+## Consideraciones Importantes
+
+<Tip>
+  💡 Consejos para una Integración Exitosa:
+  - Maneja siempre los códigos de respuesta
+  - Implementa reintentos con backoff exponencial
+  - Valida los datos antes de enviarlos
+  - Mantén tus credenciales seguras
+</Tip>
+
+### Soporte y Contacto
+
+<Note>
+  🤝 Estamos aquí para ayudarte:
+  - **Email**: soporte@cerouno.ai
+  - **Teléfono**: +57 311 3627525
+</Note>
+
+<Tip>
+  🚀 Cada endpoint es una puerta a la innovación inmobiliaria. ¡Explóralos con pasión!
+</Tip>

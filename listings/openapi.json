@@ -21,6 +21,7 @@
   "paths": {
     "/api/listings/{listing_id}": {
       "get": {
+        "summary": "Obtener propiedad",
         "description": "Devolver la información de una propiedad",
         "parameters": [
           {
@@ -108,6 +109,7 @@
         }
       },
       "put": {
+        "summary": "Actualizar propiedad",
         "description": "Actualizar la información de una propiedad",
         "parameters": [
           {
@@ -206,6 +208,7 @@
     },
     "/api/listings": {
       "get": {
+        "summary": "Obtener propiedades",
         "description": "Devolver todas las propiedades",
         "parameters" : [
           {
@@ -312,7 +315,89 @@
           }
         }
       },
+      "delete" : {
+        "summary" : "Eliminar propiedad",
+        "description" : "Eliminar una propiedad",
+        "parameters" : [
+          {
+            "name" : "listing_id",
+            "in" : "path",
+            "description" : "ID de la propiedad",
+            "required" : true,
+            "schema" : {
+              "type" : "integer",
+              "format" : "int64"
+            }
+          }
+        ],
+        "responses" : {
+          "200" : {
+            "description" : "Propiedad eliminada"
+          },
+          "400" : {
+            "description" : "Unexpected error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UnexpectedError"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Propiedad no encontrada",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/NotFoundError"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UnauthorizedError"
+                }
+              }
+            }
+          },
+          "429" : {
+            "description" : "Too many requests",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TooManyRequestsError"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal server error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          },
+          "502" : {
+            "description" : "Bad gateway",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BadGatewayError"
+                }
+              }
+            }
+          }
+        }
+      },
       "post": {
+        "summary": "Crear propiedad",
         "description": "Crear una nueva propiedad",
         "requestBody": {
           "content": {
@@ -521,7 +606,8 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "example": 1
           }
         }
       },
@@ -655,7 +741,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "An unexpected error occurred"
           }
         }
       },
@@ -663,7 +750,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Property not found"
           }
         }
       },
@@ -671,7 +759,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Unauthorized Error"
           }
         }
       },
@@ -679,7 +768,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Too many requests"
           }
         }
       },
@@ -687,7 +777,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Internal server error"
           }
         }
       },
@@ -695,7 +786,8 @@
         "type": "object",
         "properties": {
           "message": {
-            "type": "string"
+            "type": "string",
+            "example": "Bad gateway"
           }
         }
       }

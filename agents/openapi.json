@@ -22,17 +22,7 @@
     "/api/agents": {
       "get": {
         "summary": "Obtener agentes",
-        "description": "Devuelve la lista de agentes asociados a una inmobiliaria.",
-        "parameters": [
-          {
-            "name": "client_id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Devuelve la lista de agentes a un Software Inmobiliario.",
         "responses": {
           "200": {
             "description": "OK",
@@ -114,7 +104,7 @@
         "description": "Crea un nuevo agente asociado a la inmobiliaria.",
         "parameters": [
           {
-            "name": "client_id",
+            "name": "broker_id",
             "in": "header",
             "required": true,
             "schema": {
@@ -212,14 +202,6 @@
         "description": "Actualiza la información de un agente específico.",
         "parameters": [
           {
-            "name": "client_id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "agent_id",
             "in": "path",
             "required": true,
@@ -316,14 +298,6 @@
         "description": "Devuelve la información de un agente específico.",
         "parameters": [
           {
-            "name": "client_id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "agent_id",
             "in": "path",
             "required": true,
@@ -410,14 +384,6 @@
         "description": "Elimina un agente específico de la inmobiliaria.",
         "parameters": [
           {
-            "name": "client_id",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "agent_id",
             "in": "path",
             "required": true,
@@ -427,6 +393,21 @@
           }
         ],
         "responses": {
+          "200" : {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type" : "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "204": {
             "description": "No Content"
           },
@@ -492,6 +473,97 @@
             }
           }
         }
+      },
+      "/api/agents/broker/{broker_id}":{
+        "get": {
+          "summary": "Obtener agentes por broker",
+          "description": "Devuelve la lista de agentes asociados a un broker específico.",
+          "parameters": [
+            {
+              "name": "broker_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Agent"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Unexpected error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UnexpectedError"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UnauthorizedError"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not Found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/NotFoundError"
+                  }
+                }
+              }
+            },
+            "429": {
+              "description": "Too many requests",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/TooManyRequestsError"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InternalError"
+                  }
+                }
+              }
+            },
+            "502": {
+              "description": "Bad Gateway",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/BadGatewayError"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }, 
     "components": {
@@ -500,7 +572,10 @@
           "type": "object",
           "properties": {
             "message": {
-              "type": "string"
+              "type": "string",
+              "description": "Mensaje de error",
+              "example": "Error inesperado"
+
             }
           }
         },
@@ -508,7 +583,8 @@
           "type": "object",
           "properties": {
             "message": {
-              "type": "string"
+              "type": "string",
+              "example" : "Credenciales de Autenticación inválidas"
             }
           }
         },
@@ -516,7 +592,8 @@
           "type": "object",
           "properties": {
             "message": {
-              "type": "string"
+              "type": "string",
+              "example": "No se encontró el recurso solicitado"
             }
           }
         },
@@ -524,7 +601,8 @@
           "type": "object",
           "properties": {
             "message": {
-              "type": "string"
+              "type": "string",
+              "example": "Demasiadas solicitudes"
             }
           }
         },
@@ -532,7 +610,8 @@
           "type": "object",
           "properties": {
             "message": {
-              "type": "string"
+              "type": "string",
+              "example": "Error interno del servidor"
             }
           }
         },
@@ -540,7 +619,8 @@
           "type": "object",
           "properties": {
             "message": {
-              "type": "string"
+              "type": "string",
+              "example": "Error en la conexión con el servidor"
             }
           }
         },
@@ -548,16 +628,20 @@
           "type": "object",
           "properties": {
             "id": {
-              "type": "integer"
+              "type": "integer",
+              "format": "int64"
             },
             "name": {
-              "type": "string"
+              "type": "string",
+              "example": "Juan Pérez"
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "example": "miguel@cerouno.ai"
             },
             "phone": {
-              "type": "string"
+              "type": "string",
+              "example": "1234567890"
             }
           }
         },
@@ -565,13 +649,16 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "example": "Juan Pérez"
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "example": "miguel@cerouno.ai"
             },
             "phone": {
-              "type": "string"
+              "type": "string",
+              "example": "1234567890"
             }
           }
         },
@@ -579,13 +666,16 @@
           "type": "object",
           "properties": {
             "name": {
-              "type": "string"
+              "type": "string",
+              "example": "Juan Pérez"
             },
             "email": {
-              "type": "string"
+              "type": "string",
+              "example": "miguel@cerouno.ai"
             },
             "phone": {
-              "type": "string"
+              "type": "string",
+              "example": "1234567890"
             }
           }
         }

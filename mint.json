@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "CEROUNO API Documentation",
   "logo": {
-    "dark": "/logo/2.svg",
-    "light": "/logo/2.svg"
+    "dark": "/logo/logo_v1.jpg",
+    "light": "/logo/logo_v3.jpg"
   },
   "favicon": "logo/favicon.jpg",
   "theme": "prism",
@@ -24,7 +24,7 @@
   ],
   "topbarCtaButton": {
     "name": "API",
-    "url": "https://simi-api-project-dev-749074430490.us-central1.run.app"
+    "url": "https://cerouno-api-project-749074430490.us-central1.run.app"
   },
   "tabs": [
     {
@@ -34,17 +34,17 @@
   ],
   "anchors": [
     {
-      "name": "Link a CEROUNO",
+      "name": "CEROUNO",
       "icon": "link",
       "url": "https://www.cerouno.ai/"
     },
     {
-      "name": "Link a nuestro Blog",
+      "name": "Blog",
       "icon": "newspaper",
       "url": "https://www.cerouno.ai/blog"
     },
     {
-      "name": "Correo Soporte",
+      "name": "Soporte",
       "icon": "mailchimp",
       "url": "mailto:miguel@cerouno.ai"
     }

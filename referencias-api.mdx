@@ -6,12 +6,12 @@ icon: 'code'
 
 <img
   className="block dark:hidden"
-  src="/images/api-reference-light.svg"
+  src="/logo/logo_v2.jpg"
   alt="API Reference Light"
 />
 <img
   className="hidden dark:block"
-  src="/images/api-reference-dark.svg"
+  src="/logo/logo_v4.jpg"
   alt="API Reference Dark"
 />
 
@@ -51,20 +51,27 @@ Bienvenido a la guía definitiva para integradores y desarrolladores. Aquí enco
 
 <Accordion title="Lista de Endpoints Disponibles">
   ### Propiedades
-  - `GET /v1/propiedades`: Listar propiedades
-  - `POST /v1/propiedades`: Crear nueva propiedad
-  - `PUT /v1/propiedades/{id}`: Actualizar propiedad
-  - `DELETE /v1/propiedades/{id}`: Eliminar propiedad
+  - `GET /api/listings`: Listar propiedades
+  - `GET /api/listings/{id}`: Consultar propiedad por ID
+  - `POST /api/listings`: Crear nueva propiedad
+  - `PUT /api/listings/{id}`: Actualizar propiedad
+  - `DELETE /api/listings/{id}`: Eliminar propiedad
 
   ### Agentes
-  - `GET /v1/agentes`: Listar agentes
-  - `POST /v1/agentes`: Crear nuevo agente
-  - `PUT /v1/agentes/{id}`: Actualizar agente
-  - `DELETE /v1/agentes/{id}`: Eliminar agente
+  - `GET /api/agents`: Listar agentes
+  - `GET /api/agents/{id}`: Consultar agente por ID
+  - `GET /api/agents/broker/{id}`: Consultar agentes por broker
+  - `POST /api/agents`: Crear nuevo agente
+  - `PUT /api/agents/{id}`: Actualizar agente
+  - `DELETE /api/agents/{id}`: Eliminar agente
 
-  ### Inventario
-  - `GET /v1/inventario`: Consultar inventario
-  - `POST /v1/inventario`: Actualizar inventario
+  ### Inmobiliarias
+  - `GET /api/clients`: Listar inmobiliarias
+  - `GET /api/clients/{id}`: Consultar inmobiliaria por ID
+  - `POST /api/clients`: Crear nueva inmobiliaria
+  - `PUT /api/clients/{id}`: Actualizar inmobiliaria
+  - `DELETE /api/clients/{id}`: Eliminar inmobiliaria
+  
 </Accordion>
 
 ## Esquemas de Datos
@@ -73,23 +80,34 @@ Bienvenido a la guía definitiva para integradores y desarrolladores. Aquí enco
 
 ```json
 {
-  "id": "string",
-  "titulo": "string",
-  "descripcion": "string",
-  "tipo": "string",
-  "precio": "number",
-  "ubicacion": {
-    "ciudad": "string",
-    "departamento": "string",
-    "direccion": "string"
-  },
-  "caracteristicas": {
-    "habitaciones": "number",
-    "banos": "number",
-    "area": "number"
-  },
-  "estado": "string",
-  "agente_id": "string"
+  "id" : "string",
+  "for_rent" : "boolean",
+  "for_sell" : "boolean",
+  "rent_price" : "number",
+  "sell_price" : "number",
+  "built_area" : "number",
+  "area" : "number",
+  "lot_area" : "number",
+  "property_type" : "string",
+  "description" : "string",
+  "images" : "array",
+  "number_of_bedrooms" : "number",
+  "number_of_bathrooms" : "number",
+  "number_of_parking_lots" : "number",
+  "administration_fee" : "number",
+  "latitude" : "number",
+  "longitude" : "number",
+  "location" : "string",
+  "amenities" : "array",
+  "exterior_characteristics" : "array",
+  "agent_id" : "string",
+  "contact_name" : "string",
+  "contact_email" : "string",
+  "contact_whatsapp" : "string",
+  "zone_stratification" : "number",
+  "year_built" : "number",
+  "floor_number" : "number",
+  "created_at" : "string"
 }
 ```
 
@@ -98,11 +116,20 @@ Bienvenido a la guía definitiva para integradores y desarrolladores. Aquí enco
 ```json
 {
   "id": "string", 
-  "nombre": "string",
+  "full_name": "string",
   "email": "string",
-  "telefono": "string",
-  "empresa": "string",
-  "propiedades": "array"
+  "phone": "string",
+}
+```
+
+### Esquema de Inmobiliaria
+
+```json
+{
+  "id": "string",
+  "name": "string",
+  "phone": "string",
+  "email": "string",
 }
 ```
 
@@ -118,7 +145,7 @@ Bienvenido a la guía definitiva para integradores y desarrolladores. Aquí enco
   </Step>
 
   <Step title="Incluir Token">
-    Añade el token recibido en el encabezado `Authorization`
+    Añade el token recibido en el encabezado `x-api-key`
   </Step>
 </Steps>
 
@@ -126,36 +153,8 @@ Bienvenido a la guía definitiva para integradores y desarrolladores. Aquí enco
 
 ```bash
 curl -X GET "https://api.cerouno.ai/v1/propiedades" \
--H "Authorization: Bearer TU_TOKEN_DE_ACCESO"
+-H "x-api-key: TU_TOKEN_DE_ACCESO"
 ```
-
-## Códigos de Respuesta
-
-<CardGroup cols={2}>
-  <Card
-    title="Códigos Exitosos"
-    icon="check-circle"
-    color="#4CAF50"
-  >
-    - 200 OK
-    - 201 Created
-    - 204 No Content
-  </Card>
-
-  <Card
-    title="Códigos de Error"
-    icon="triangle-exclamation"
-    color="#F44336"
-  >
-    - 400 Bad Request
-    - 401 Unauthorized
-    - 403 Forbidden
-    - 404 Not Found
-    - 500 Internal Server Error
-  </Card>
-</CardGroup>
-
-## Consideraciones Importantes
 
 <Tip>
   💡 Consejos para una Integración Exitosa:

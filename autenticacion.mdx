@@ -6,22 +6,22 @@ icon: 'lock'
 
 <img
   className="block dark:hidden"
-  src="/images/authentication-light.svg"
+  src="/logo/logo_v1.jpg"
   alt="Authentication Light"
 />
 <img
   className="hidden dark:block"
-  src="/images/authentication-dark.svg"
+  src="/logo/logo_v3.jpg"
   alt="Authentication Dark"
 />
 
 ## Introducción a la Autenticación
 
-La autenticación es fundamental para proteger el acceso a nuestra API. Garantizamos la seguridad de tus datos mediante un robusto sistema de autenticación basado en tokens Bearer.
+La autenticación es fundamental para proteger el acceso a nuestra API. Garantizamos la seguridad de tus datos mediante un robusto sistema de autenticación basado en api tokens.
 
 ### Características Clave
 
-- **Seguridad Robusta**: Implementamos el estándar Bearer Token
+- **Seguridad Robusta**: Implementamos el estándar API key
 - **Gestión Simple**: Proceso de obtención de token claro y directo
 - **Tokens Temporales**: Seguridad adicional mediante tokens con tiempo de vida limitado
 
@@ -65,7 +65,7 @@ Incluye el token en el encabezado `x-api-key` de cada petición:
 
 ```bash
 curl -X GET "https://api.cerouno.ai/v1/inmuebles" \
--H "x-api-key : Bearer TU_TOKEN_DE_ACCESO"
+-H "x-api-key : TU_TOKEN_DE_ACCESO"
 ```
 
 ## Mejores Prácticas
@@ -98,7 +98,7 @@ curl -X GET "https://api.cerouno.ai/v1/inmuebles" \
 
 ## Recursos Adicionales
 
-- [Documentación Técnica](/listings/obtener-propiedad)
+- [Documentación Técnica](/referencias-api)
 - [Primeros Pasos](/docs/primeros-pasos)
 
 ### Contacto de Soporte

@@ -90,12 +90,12 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/ClientResponse"
                 }
               }
             }
@@ -215,7 +215,7 @@
         "description": "Actualiza la información de una inmobiliaria específica.",
         "parameters": [
           {
-            "name": "broker_id",
+            "name": "client_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -228,7 +228,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Client"
+                "$ref": "#/components/schemas/ClientAdd"
               }
             }
           }
@@ -383,6 +383,18 @@
             "type": "string",
             "example": "https://example.com/logo.png",
             "description": "URL de la imagen del logo de la inmobiliaria"
+          }
+        }
+      },
+      "ClientResponse":{
+        "type" : "object",
+        "properties" : {
+          "message": {
+            "type": "string",
+            "example": "Client Added Successfully"
+          },
+          "client": {
+            "$ref": "#/components/schemas/Client"
           }
         }
       },

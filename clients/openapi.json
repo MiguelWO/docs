@@ -149,7 +149,7 @@
         "description": "Devuelve la información de una inmobiliaria específica.",
         "parameters": [
           {
-            "name": "broker_id",
+            "name": "client_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -383,6 +383,11 @@
           "phone": {
             "type": "string",
             "example": "1234567890"
+          },
+          "logo_url": {
+            "type": "string",
+            "example": "https://example.com/logo.png",
+            "description": "URL de la imagen del logo de la inmobiliaria"
           }
         }
       },

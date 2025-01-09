@@ -84,7 +84,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Client"
+                "$ref": "#/components/schemas/ClientAdd"
               }
             }
           }
@@ -360,6 +360,30 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Client"
+        }
+      },
+      "ClientAdd": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Inmobiliaria Los Pinos",
+            "description": "Nombre de la inmobiliaria"
+          },
+          "email": {
+            "type": "string",
+            "example": "cerouno@gmail.com",
+            "description": "Correo electrónico de la inmobiliaria"
+          },
+          "phone": {
+            "type": "string",
+            "example": "1234567890"
+          },
+          "logo_url": {
+            "type": "string",
+            "example": "https://example.com/logo.png",
+            "description": "URL de la imagen del logo de la inmobiliaria"
+          }
         }
       },
       "Client": {

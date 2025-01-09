@@ -143,7 +143,7 @@
         }
       }
     },
-    "/client/{client_id}": {
+    "/api/clients/{client_id}": {
       "get": {
         "summary": "Obtener una Inmobiliaria",
         "description": "Devuelve la información de una inmobiliaria específica.",
@@ -301,16 +301,14 @@
           ],
           "responses": {
             "200" : {
+              "description": "OK",
               "content": {
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/SuccesfulDelete"
+                    "$ref": "#/components/schemas/SuccessfulDelete"
                   }
                 }
               }
-            },
-            "204": {
-              "description": "No Content"
             },
             "401": {
               "description": "Unauthorized",
@@ -355,7 +353,7 @@
           }
         }
       }
-  },
+    },
   "components" : {
     "schemas": {
       "Clients": {
@@ -415,12 +413,12 @@
           }
         }
       },
-      "SuccesfulDelete": {
+      "SuccessfulDelete": {
         "type": "object",
         "properties": {
           "message": {
             "type": "string",
-            "example": "Inmobiliaria eliminada exitosamente."
+            "example": "Successfully deleted"
           }
         }
       },
@@ -429,7 +427,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Demasiadas solicitudes. Intente nuevamente en unos minutos."
+            "example": "Request was throttled. Try again in 1 minute."
           }
         }
       },
@@ -438,7 +436,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Error interno del servidor. Intente nuevamente más tarde."
+            "example": "Internal Server Error"
           }
         }
       },

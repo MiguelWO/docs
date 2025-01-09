@@ -361,15 +361,13 @@
                   "type" : "object",
                   "properties": {
                     "message": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Agent deleted successfully"
                     }
                   }
                 }
               }
             }
-          },
-          "204": {
-            "description": "No Content"
           },
           "400": {
             "description": "Unexpected error",

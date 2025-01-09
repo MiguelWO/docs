@@ -36,7 +36,7 @@
                   }
                 }
               }
-          },
+            },
           "400": {
             "description": "Unexpected error",
             "content": {
@@ -83,22 +83,12 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InternalError"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
-                }
               }
             }
           }
         }
-      },
+      }
+    },
       "post": {
         "summary": "Crear agente",
         "description": "Crea un nuevo agente asociado a la inmobiliaria.",
@@ -179,16 +169,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InternalError"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
                 }
               }
             }
@@ -280,16 +260,6 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
-                }
-              }
-            }
           }
         }
       },
@@ -363,16 +333,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InternalError"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
                 }
               }
             }
@@ -460,20 +420,10 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/BadGatewayError"
-                  }
-                }
-              }
-            }
           }
         }
-      },
+      }
+    },
       "/api/agents/broker/{broker_id}":{
         "get": {
           "summary": "Obtener agentes por broker",
@@ -551,21 +501,11 @@
                   }
                 }
               }
-            },
-            "502": {
-              "description": "Bad Gateway",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/BadGatewayError"
-                  }
-                }
-              }
             }
           }
         }
       }
-    }, 
+    },
     "components": {
       "schemas": {
         "UnexpectedError": {
@@ -573,8 +513,8 @@
           "properties": {
             "message": {
               "type": "string",
-              "description": "Mensaje de error",
-              "example": "Error inesperado"
+              "description": "Unexpected error",
+              "example": "Agent ID is required"
 
             }
           }
@@ -584,7 +524,7 @@
           "properties": {
             "message": {
               "type": "string",
-              "example" : "Credenciales de Autenticación inválidas"
+              "example" : "Invalid API Key"
             }
           }
         },
@@ -593,7 +533,7 @@
           "properties": {
             "message": {
               "type": "string",
-              "example": "No se encontró el recurso solicitado"
+              "example": "Agent not found"
             }
           }
         },
@@ -602,7 +542,7 @@
           "properties": {
             "message": {
               "type": "string",
-              "example": "Demasiadas solicitudes"
+              "example": "Request was throttled. Try again in 1 minute."
             }
           }
         },
@@ -611,16 +551,7 @@
           "properties": {
             "message": {
               "type": "string",
-              "example": "Error interno del servidor"
-            }
-          }
-        },
-        "BadGatewayError": {
-          "type": "object",
-          "properties": {
-            "message": {
-              "type": "string",
-              "example": "Error en la conexión con el servidor"
+              "example": "Internal server error"
             }
           }
         },
@@ -690,5 +621,8 @@
       }
     }
   }
+
+
+
 
 

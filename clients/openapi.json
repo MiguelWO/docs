@@ -73,16 +73,6 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGateway"
-                }
-              }
-            }
           }
         }
       },
@@ -146,16 +136,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InternalServerError"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGateway"
                 }
               }
             }
@@ -224,16 +204,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InternalServerError"
-                }
-              }
-            }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGateway"
                 }
               }
             }
@@ -313,17 +283,7 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/BadGateway"
-                  }
-                }
-              }
-            }
+          }
           }
         },
         "delete" : {
@@ -391,16 +351,6 @@
                   }
                 }
               }
-            },
-            "502": {
-              "description": "Bad Gateway",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/BadGateway"
-                  }
-                }
-              }
             }
           }
         }
@@ -443,7 +393,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Credenciales de Autenticación inválidas."
+            "example": "Invalid API Key"
           }
         }
       },
@@ -452,7 +402,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Inmobiliaria no encontrada."
+            "example": "Brokers not found"
           }
         }
       },
@@ -461,7 +411,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Petición inválida."
+            "example": "Invalid request body"
           }
         }
       },

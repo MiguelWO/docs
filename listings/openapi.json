@@ -95,20 +95,10 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
-                }
-              }
-            }
           }
         }
       },
-      "put": {
+      "patch": {
         "summary": "Actualizar propiedad",
         "description": "Actualizar la información de una propiedad",
         "parameters": [
@@ -192,13 +182,81 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad gateway",
+          }
+        }
+      },
+      "delete":{
+        "summary": "Eliminar propiedad",
+        "description": "Eliminar una propiedad",
+        "parameters": [
+          {
+            "name": "listing_id",
+            "in": "path",
+            "description": "ID de la propiedad",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Propiedad eliminada",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
+                  "$ref": "#/components/schemas/DeleteListingResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnexpectedError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Propiedad no encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TooManyRequestsError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -302,97 +360,6 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete" : {
-        "summary" : "Eliminar propiedad",
-        "description" : "Eliminar una propiedad",
-        "parameters" : [
-          {
-            "name" : "listing_id",
-            "in" : "path",
-            "description" : "ID de la propiedad",
-            "required" : true,
-            "schema" : {
-              "type" : "integer",
-              "format" : "int64"
-            }
-          }
-        ],
-        "responses" : {
-          "200" : {
-            "description" : "Propiedad eliminada"
-          },
-          "400" : {
-            "description" : "Unexpected error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/UnexpectedError"
-                }
-              }
-            }
-          },
-          "404" : {
-            "description" : "Propiedad no encontrada",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/NotFoundError"
-                }
-              }
-            }
-          },
-          "401" : {
-            "description" : "Unauthorized",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/UnauthorizedError"
-                }
-              }
-            }
-          },
-          "429" : {
-            "description" : "Too many requests",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/TooManyRequestsError"
-                }
-              }
-            }
-          },
-          "500" : {
-            "description" : "Internal server error",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/InternalServerError"
-                }
-              }
-            }
-          },
-          "502" : {
-            "description" : "Bad gateway",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/BadGatewayError"
-                }
-              }
-            }
           }
         }
       },
@@ -414,7 +381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListingId"
+                  "$ref": "#/components/schemas/Listing"
                 }
               }
             }
@@ -458,16 +425,6 @@
                 }
               }
             }
-          },
-          "502": {
-            "description": "Bad gateway",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BadGatewayError"
-                }
-              }
-            }
           }
         }
       }
@@ -475,6 +432,15 @@
   },
   "components": {
     "schemas": {
+      "DeleteListingResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Listing deleted"
+          }
+        }
+      },
       "Listing": {
         "type": "object",
         "properties": {
@@ -742,7 +708,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "An unexpected error occurred"
+            "example": "Listing ID is required"
           }
         }
       },
@@ -760,7 +726,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Unauthorized Error"
+            "example": "No API key provided"
           }
         }
       },
@@ -769,7 +735,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Too many requests"
+            "example": "Request was throttled. Try again in 1 minute."
           }
         }
       },
@@ -779,15 +745,6 @@
           "message": {
             "type": "string",
             "example": "Internal server error"
-          }
-        }
-      },
-      "BadGatewayError": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "example": "Bad gateway"
           }
         }
       }

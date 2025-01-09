@@ -210,7 +210,7 @@
           }
         }
       },
-      "put" : {
+      "patch" : {
         "summary": "Actualizar Inmobiliaria",
         "description": "Actualiza la información de una inmobiliaria específica.",
         "parameters": [

@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/api/clients": {
+    "/api/brokers": {
       "get": {
         "summary": "Obtener Inmobiliarias",
         "description": "Devuelve una lista de clientes registrados en el sistema.",
@@ -143,13 +143,13 @@
         }
       }
     },
-    "/api/clients/{client_id}": {
+    "/api/brokers/{broker_id}": {
       "get": {
         "summary": "Obtener una Inmobiliaria",
         "description": "Devuelve la información de una inmobiliaria específica.",
         "parameters": [
           {
-            "name": "client_id",
+            "name": "broker_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -215,7 +215,7 @@
         "description": "Actualiza la información de una inmobiliaria específica.",
         "parameters": [
           {
-            "name": "client_id",
+            "name": "broker_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -228,7 +228,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientAdd"
+                "$ref": "#/components/schemas/ClientPatch"
               }
             }
           }
@@ -239,7 +239,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/ClientUpdateResponse"
                 }
               }
             }
@@ -356,10 +356,50 @@
     },
   "components" : {
     "schemas": {
-      "Clients": {
+      "Clients":  {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/Client"
+        }
+      },
+      "ClientUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Client updated successfully"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1,
+            "description": "ID de la inmobiliaria actualizada"
+          }
+        }
+      },
+      "ClientPatch" : {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Inmobiliaria Los Pinos",
+            "description": "Nombre de la inmobiliaria"
+          },
+          "email": {
+            "type": "string",
+            "example": "cerouno@gmail.com",
+            "description": "Correo electrónico de la inmobiliaria"
+          },
+          "phone": {
+            "type": "number",
+            "example": "1234567890",
+            "description": "Número de teléfono de la inmobiliaria"
+          },
+          "logo_url": {
+            "type": "string",
+            "example": "https://example.com/logo.png",
+            "description": "URL de la imagen del logo de la inmobiliaria"
+          }
         }
       },
       "ClientAdd": {
@@ -376,25 +416,29 @@
             "description": "Correo electrónico de la inmobiliaria"
           },
           "phone": {
-            "type": "string",
-            "example": "1234567890"
+            "type": "number",
+            "example": "1234567890",
+            "description": "Número de teléfono de la inmobiliaria"
           },
           "logo_url": {
             "type": "string",
             "example": "https://example.com/logo.png",
             "description": "URL de la imagen del logo de la inmobiliaria"
           }
-        }
+        },
+        "required": ["name", "email", "phone"]
       },
       "ClientResponse":{
         "type" : "object",
         "properties" : {
           "message": {
             "type": "string",
-            "example": "Client Added Successfully"
+            "example": "Client added successfully",
+            "description": "Mensaje de éxito al crear la inmobiliaria"
           },
           "client": {
-            "$ref": "#/components/schemas/Client"
+            "$ref": "#/components/schemas/Client",
+            "description": "Información de la inmobiliaria creada"
           }
         }
       },
@@ -404,7 +448,8 @@
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1
+            "example": 1,
+            "description": "ID de la inmobiliaria"
           },
           "name": {
             "type": "string",
@@ -417,8 +462,9 @@
             "description": "Correo electrónico de la inmobiliaria"
           },
           "phone": {
-            "type": "string",
-            "example": "1234567890"
+            "type": "integer",
+            "example": "1234567890",
+            "description": "Número de teléfono de la inmobiliaria"
           },
           "logo_url": {
             "type": "string",
@@ -459,7 +505,8 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Successfully deleted"
+            "example": "Successfully deleted",
+            "description": "Mensaje de éxito al eliminar la inmobiliaria"
           }
         }
       },

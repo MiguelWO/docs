@@ -41,7 +41,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Listing"
+                  "$ref": "#/components/schemas/ListingResponse"
                 }
               }
             }
@@ -128,7 +128,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Listing"
+                  "$ref": "#/components/schemas/ListingUpdateResponse"
                 }
               }
             }
@@ -315,7 +315,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Listing"
+                    "$ref": "#/components/schemas/ListingResponse"
                   }
                 }
               }
@@ -370,7 +370,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateListing"
+                "$ref": "#/components/schemas/CreateListing"
               }
             }
           }
@@ -381,7 +381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Listing"
+                  "$ref": "#/components/schemas/ListingResponse"
                 }
               }
             }
@@ -437,9 +437,256 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Listing deleted"
+            "example": "Propertys deleted"
           }
         }
+      },
+      "CreateListing" : {
+        "type": "object",
+        "properties": {
+            "broker_id": {
+              "type": "integer",
+              "example": 1
+            },
+            "for_rent": {
+              "type": "boolean",
+              "example": true
+            },
+            "for_sell": {
+              "type": "boolean",
+              "example": false
+            },
+            "rent_price": {
+              "type": "number",
+              "example": 1500.50
+            },
+            "sell_price": {
+              "type": "number",
+              "example": 250000.75
+            },
+            "built_area": {
+              "type": "number",
+              "example": 85.5
+            },
+            "area": {
+              "type": "number",
+              "example": 120.0
+            },
+            "lot_area": {
+              "type": "number",
+              "example": 300.0
+            },
+            "property_type": {
+              "type": "string",
+              "example": "apartment"
+            },
+            "description": {
+              "type": "string",
+              "example": "Beautiful 3-bedroom apartment with ocean view."
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["image1.jpg", "image2.jpg"]
+            },
+            "number_of_bedrooms": {
+              "type": "integer",
+              "example": 3
+            },
+            "number_of_bathrooms": {
+              "type": "integer",
+              "example": 2
+            },
+            "number_of_parking_lots": {
+              "type": "integer",
+              "example": 1
+            },
+            "administration_fee": {
+              "type": "number",
+              "example": 200.0
+            },
+            "latitude": {
+              "type": "number",
+              "format": "float",
+              "example": 40.712776
+            },
+            "longitude": {
+              "type": "number",
+              "format": "float",
+              "example": -74.005974
+            },
+            "location": {
+              "type": "string",
+              "example": "New York, NY"
+            },
+            "amenities": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["pool", "gym", "wifi"]
+            },
+            "exterior_characteristics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["balcony", "garden"]
+            },
+            "contact_name": {
+              "type": "string",
+              "example": "John Doe"
+            },
+            "contact_email": {
+              "type": "string",
+              "format": "email",
+              "example": "miguel@cerouno.ai"
+            },
+            "contact_whatsapp": {
+              "type": "string",
+              "example": "+1234567890"
+            },
+            "zone_stratification": {
+              "type": "integer",
+              "example": 4
+            },
+            "year_built": {
+              "type": "integer",
+              "example": 2010
+            },
+            "floor_number": {
+              "type": "integer",
+              "example": 5
+            }
+          },
+          "required": ["broker_id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude", "description"]
+      },
+      "ListingResponse" : {
+        "type": "object",
+        "properties": {
+              "id": {
+              "type": "integer",
+              "example": 1
+            },
+            "for_rent": {
+              "type": "boolean",
+              "example": true
+            },
+            "for_sell": {
+              "type": "boolean",
+              "example": false
+            },
+            "rent_price": {
+              "type": "number",
+              "example": 1500.50
+            },
+            "sell_price": {
+              "type": "number",
+              "example": 250000.75
+            },
+            "built_area": {
+              "type": "number",
+              "example": 85.5
+            },
+            "area": {
+              "type": "number",
+              "example": 120.0
+            },
+            "lot_area": {
+              "type": "number",
+              "example": 300.0
+            },
+            "property_type": {
+              "type": "string",
+              "example": "apartment"
+            },
+            "description": {
+              "type": "string",
+              "example": "Beautiful 3-bedroom apartment with ocean view."
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["image1.jpg", "image2.jpg"]
+            },
+            "number_of_bedrooms": {
+              "type": "integer",
+              "example": 3
+            },
+            "number_of_bathrooms": {
+              "type": "integer",
+              "example": 2
+            },
+            "number_of_parking_lots": {
+              "type": "integer",
+              "example": 1
+            },
+            "administration_fee": {
+              "type": "number",
+              "example": 200.0
+            },
+            "latitude": {
+              "type": "number",
+              "format": "float",
+              "example": 40.712776
+            },
+            "longitude": {
+              "type": "number",
+              "format": "float",
+              "example": -74.005974
+            },
+            "location": {
+              "type": "string",
+              "example": "New York, NY"
+            },
+            "amenities": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["pool", "gym", "wifi"]
+            },
+            "exterior_characteristics": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "example": ["balcony", "garden"]
+            },
+            "contact_name": {
+              "type": "string",
+              "example": "John Doe"
+            },
+            "contact_email": {
+              "type": "string",
+              "format": "email",
+              "example": "johndoe@example.com"
+            },
+            "contact_whatsapp": {
+              "type": "string",
+              "example": "+1234567890"
+            },
+            "zone_stratification": {
+              "type": "integer",
+              "example": 4
+            },
+            "year_built": {
+              "type": "integer",
+              "example": 2010
+            },
+            "floor_number": {
+              "type": "integer",
+              "example": 5
+            },
+            "broker_id": {
+              "type": "integer",
+              "example": 1
+            }
+          }
       },
       "Listing": {
         "type": "object",
@@ -535,10 +782,6 @@
               },
               "example": ["balcony", "garden"]
             },
-            "agent_id": {
-              "type": "integer",
-              "example": 101
-            },
             "contact_name": {
               "type": "string",
               "example": "John Doe"
@@ -565,7 +808,7 @@
               "example": 5
             }
           },
-          "required": ["id", "for_rent", "for_sell", "property_type", "agent_id", "contact_name", "contact_email"]
+          "required": ["id", "for_rent", "for_sell", "property_type", "contact_name", "contact_email"]
       },
       "ListingId": {
         "type": "object",
@@ -574,6 +817,15 @@
             "type": "integer",
             "format": "int64",
             "example": 1
+          }
+        }
+      },
+      "ListingUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Property updated"
           }
         }
       },
@@ -671,10 +923,6 @@
               },
               "example": ["balcony", "garden"]
             },
-            "agent_id": {
-              "type": "integer",
-              "example": 101
-            },
             "contact_name": {
               "type": "string",
               "example": "John Doe"
@@ -700,8 +948,7 @@
               "type": "integer",
               "example": 5
             }
-          },
-          "required": ["id", "for_rent", "for_sell", "property_type", "agent_id", "contact_name", "contact_email"]
+          }
       },
       "UnexpectedError": {
         "type": "object",

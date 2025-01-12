@@ -177,7 +177,7 @@
       }
     },
     "/api/agents/{agent_id}": {
-      "put": {
+      "patch": {
         "summary": "Actualizar agente",
         "description": "Actualiza la información de un agente específico.",
         "parameters": [
@@ -206,7 +206,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Agent"
+                  "$ref": "#/components/schemas/AgentUpdateResponse"
                 }
               }
             }
@@ -358,13 +358,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type" : "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "example": "Agent deleted successfully"
-                    }
-                  }
+                  "$ref": "#/components/schemas/DeleteAgent"
                 }
               }
             }
@@ -553,48 +547,80 @@
             }
           }
         },
+        "DeleteAgent": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "example": "Agent deleted"
+            }
+          }
+        },
+        "AgentUpdateResponse": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "example": "Agent updated"
+            }
+          }
+        },
         "Agent": {
           "type": "object",
           "properties": {
             "id": {
               "type": "integer",
-              "format": "int64"
+              "format": "int64",
+              "example": 1,
+              "description": "Agent ID"
             },
-            "name": {
+            "full_name": {
               "type": "string",
-              "example": "Juan Pérez"
+              "example": "Juan Pérez",
+              "description": "Agent name"
             },
             "email": {
               "type": "string",
-              "example": "miguel@cerouno.ai"
+              "example": "miguel@cerouno.ai",
+              "description": "Agent email"
             },
             "phone": {
+              "type": "integer",
+              "example": "1234567890",
+              "description": "Agent phone"
+            },
+            "broker_id": {
               "type": "string",
-              "example": "1234567890"
+              "example": "1",
+              "description": "Broker ID"
             }
           }
         },
         "CreateAgent": {
           "type": "object",
           "properties": {
-            "name": {
+            "full_name": {
               "type": "string",
-              "example": "Juan Pérez"
+              "example": "Juan Pérez",
+              "description": "Agent name"
             },
             "email": {
               "type": "string",
-              "example": "miguel@cerouno.ai"
+              "example": "miguel@cerouno.ai",
+              "description": "Agent email"
             },
             "phone": {
               "type": "string",
-              "example": "1234567890"
+              "example": "1234567890",
+              "description": "Agent phone"
             }
-          }
+          },
+          "required": ["full_name", "email", "phone"]
         },
         "UpdateAgent": {
           "type": "object",
           "properties": {
-            "name": {
+            "full_name": {
               "type": "string",
               "example": "Juan Pérez"
             },

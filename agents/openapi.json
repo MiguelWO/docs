@@ -610,7 +610,7 @@
               "description": "Agent email"
             },
             "phone": {
-              "type": "string",
+              "type": "integer",
               "example": "1234567890",
               "description": "Agent phone"
             }
@@ -629,7 +629,7 @@
               "example": "miguel@cerouno.ai"
             },
             "phone": {
-              "type": "string",
+              "type": "integer",
               "example": "1234567890"
             }
           }

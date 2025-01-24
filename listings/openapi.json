@@ -535,16 +535,16 @@
               },
               "example": ["balcony", "garden"]
             },
-            "contact_name": {
+            "name": {
               "type": "string",
               "example": "John Doe"
             },
-            "contact_email": {
+            "email": {
               "type": "string",
               "format": "email",
               "example": "miguel@cerouno.ai"
             },
-            "contact_whatsapp": {
+            "phone": {
               "type": "string",
               "example": "+1234567890"
             },
@@ -657,16 +657,16 @@
               },
               "example": ["balcony", "garden"]
             },
-            "contact_name": {
+            "name": {
               "type": "string",
               "example": "John Doe"
             },
-            "contact_email": {
+            "email": {
               "type": "string",
               "format": "email",
               "example": "johndoe@example.com"
             },
-            "contact_whatsapp": {
+            "phone": {
               "type": "string",
               "example": "+1234567890"
             },
@@ -782,16 +782,16 @@
               },
               "example": ["balcony", "garden"]
             },
-            "contact_name": {
+            "name": {
               "type": "string",
               "example": "John Doe"
             },
-            "contact_email": {
+            "email": {
               "type": "string",
               "format": "email",
               "example": "johndoe@example.com"
             },
-            "contact_whatsapp": {
+            "phone": {
               "type": "string",
               "example": "+1234567890"
             },
@@ -923,16 +923,16 @@
               },
               "example": ["balcony", "garden"]
             },
-            "contact_name": {
+            "name": {
               "type": "string",
               "example": "John Doe"
             },
-            "contact_email": {
+            "email": {
               "type": "string",
               "format": "email",
               "example": "johndoe@example.com"
             },
-            "contact_whatsapp": {
+            "whatsapp": {
               "type": "string",
               "example": "+1234567890"
             },

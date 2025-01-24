@@ -808,7 +808,7 @@
               "example": 5
             }
           },
-          "required": ["id", "for_rent", "for_sell", "property_type", "contact_name", "contact_email"]
+          "required": ["id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude", "description"]
       },
       "ListingId": {
         "type": "object",

@@ -367,7 +367,7 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Client updated successfully"
+            "example": "Broker updated successfully"
           },
           "id": {
             "type": "integer",
@@ -433,10 +433,10 @@
         "properties" : {
           "message": {
             "type": "string",
-            "example": "Client added successfully",
+            "example": "Broker added successfully",
             "description": "Mensaje de éxito al crear la inmobiliaria"
           },
-          "client": {
+          "data": {
             "$ref": "#/components/schemas/Client",
             "description": "Información de la inmobiliaria creada"
           }

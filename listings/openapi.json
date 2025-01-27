@@ -381,7 +381,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListingResponse"
+                  "$ref": "#/components/schemas/ListingResponseCreate"
                 }
               }
             }
@@ -437,7 +437,23 @@
         "properties": {
           "message": {
             "type": "string",
-            "example": "Propertys deleted"
+            "example": "Property deleted"
+          }
+        }
+      },
+      "ListingResponseCreate": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Property created"
+          },
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "property" : {
+            "$ref": "#/components/schemas/Listing"
           }
         }
       },
@@ -478,7 +494,8 @@
             },
             "property_type": {
               "type": "string",
-              "example": "apartment"
+              "enum": ["Apartamento", "Casa", "Local", "Oficina", "Bodega", "Lote", "Apartaestudio", "Finca", "Oficina"],
+              "example": "Apartamento"
             },
             "description": {
               "type": "string",
@@ -561,7 +578,7 @@
               "example": 5
             }
           },
-          "required": ["broker_id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude", "description"]
+          "required": ["broker_id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude"]
       },
       "ListingResponse" : {
         "type": "object",
@@ -600,7 +617,8 @@
             },
             "property_type": {
               "type": "string",
-              "example": "apartment"
+              "enum": ["Apartamento", "Casa", "Local", "Oficina", "Bodega", "Lote", "Apartaestudio", "Finca", "Oficina"],
+              "example": "Apartamento"
             },
             "description": {
               "type": "string",
@@ -725,7 +743,8 @@
             },
             "property_type": {
               "type": "string",
-              "example": "apartment"
+              "enum": ["Apartamento", "Casa", "Local", "Oficina", "Bodega", "Lote", "Apartaestudio", "Finca", "Oficina"],
+              "example": "Apartamento"
             },
             "description": {
               "type": "string",
@@ -826,6 +845,11 @@
           "message": {
             "type": "string",
             "example": "Property updated"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1
           }
         }
       },
@@ -866,6 +890,7 @@
             },
             "property_type": {
               "type": "string",
+              "enum": ["Apartamento", "Casa", "Local", "Oficina", "Bodega", "Lote", "Apartaestudio", "Finca", "Oficina"],
               "example": "apartment"
             },
             "description": {

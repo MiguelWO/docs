@@ -77,7 +77,6 @@
         "agents/crear-agente",
         "agents/eliminar-agente",
         "agents/obtener-agente",
-        "agents/obtener-agentes",
         "agents/obtener-agentes-por-broker"	
       ]
     },

@@ -10,7 +10,8 @@
   },
   "servers": [
     {
-      "url": "https://cerouno-api-project-749074430490.us-central1.run.app"
+      "url": "https://cerouno-api-project-staging-749074430490.us-central1.run.app",
+      "description": "Staging"
     }
   ],
   "security": [

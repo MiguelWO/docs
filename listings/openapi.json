@@ -585,6 +585,10 @@
             "property_number": {
               "type": "string",
               "example": "APT-101"
+            },
+            "project_name": {
+              "type": "string",
+              "example": "Residencial Los Pinos"
             }
           },
           "required": ["broker_id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude"]
@@ -716,6 +720,10 @@
             "property_number": {
               "type": "string",
               "example": "APT-101"
+            },
+            "project_name": {
+              "type": "string",
+              "example": "Residencial Los Pinos"
             },
             "broker_id": {
               "type": "integer",
@@ -850,6 +858,10 @@
             "property_number": {
               "type": "string",
               "example": "APT-101"
+            },
+            "project_name": {
+              "type": "string",
+              "example": "Residencial Los Pinos"
             }
           },
           "required": ["id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude", "description", "number_of_bedrooms", "number_of_bathrooms"]
@@ -1005,6 +1017,10 @@
             "property_number": {
               "type": "string",
               "example": "APT-101"
+            },
+            "project_name": {
+              "type": "string",
+              "example": "Residencial Los Pinos"
             }
           }
       },

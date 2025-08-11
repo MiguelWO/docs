@@ -577,6 +577,14 @@
             "floor_number": {
               "type": "integer",
               "example": 5
+            },
+            "address": {
+              "type": "string",
+              "example": "123 Main Street, Downtown"
+            },
+            "property_number": {
+              "type": "string",
+              "example": "APT-101"
             }
           },
           "required": ["broker_id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude"]
@@ -700,6 +708,14 @@
             "floor_number": {
               "type": "integer",
               "example": 5
+            },
+            "address": {
+              "type": "string",
+              "example": "123 Main Street, Downtown"
+            },
+            "property_number": {
+              "type": "string",
+              "example": "APT-101"
             },
             "broker_id": {
               "type": "integer",
@@ -826,6 +842,14 @@
             "floor_number": {
               "type": "integer",
               "example": 5
+            },
+            "address": {
+              "type": "string",
+              "example": "123 Main Street, Downtown"
+            },
+            "property_number": {
+              "type": "string",
+              "example": "APT-101"
             }
           },
           "required": ["id", "for_rent", "for_sell", "property_type", "location", "latitude", "longitude", "description", "number_of_bedrooms", "number_of_bathrooms"]
@@ -973,6 +997,14 @@
             "floor_number": {
               "type": "integer",
               "example": 5
+            },
+            "address": {
+              "type": "string",
+              "example": "123 Main Street, Downtown"
+            },
+            "property_number": {
+              "type": "string",
+              "example": "APT-101"
             }
           }
       },
